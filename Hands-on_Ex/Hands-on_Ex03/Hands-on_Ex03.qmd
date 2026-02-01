@@ -366,7 +366,6 @@ gg <- ggplot(globalPop,
 ggplotly(gg)
 ```
 
-
 ```{r}
 bp <- globalPop %>%
   plot_ly(
