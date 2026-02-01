@@ -519,4 +519,3 @@ fp_ggplotly <- ggplotly(p,
               "y"))
 fp_ggplotly
 ```
-
