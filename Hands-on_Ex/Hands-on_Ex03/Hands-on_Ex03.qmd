@@ -367,7 +367,6 @@ ggplotly(gg)
 ```
 
 ```{r}
-<<<<<<< HEAD
 bp <- globalPop %>%
   plot_ly(
     x = ~Old,
@@ -384,7 +383,7 @@ bp <- globalPop %>%
   ) %>%
   layout(showlegend = FALSE)
 
-=======
+
 gg <- ggplot(globalPop, 
        aes(x = Old, 
            y = Young, 
@@ -416,6 +415,5 @@ bp <- globalPop %>%
           mode = 'markers'
           ) %>%
   layout(showlegend = FALSE)
->>>>>>> 6605b582bbd58ddb806f95833c3d9fb4e3165d03
 bp
 ```

@@ -27,16 +27,13 @@ pacman::p_load(ggdist, ggridges, ggthemes,
 The code chunk below performs essential data quality checks on the imported dataset. The `duplicated()` function identifies any duplicate rows in the data, while `colSums(is.na())` checks for missing values (NA) in each column. The `cat()` and `print()` functions display the results in a readable format. Finally, `nrow()`, `ncol()`, and `complete.cases()` provide a summary of the dataset dimensions and completeness. These checks ensure data integrity before proceeding with analysis, revealing that the dataset contains 2,170 observations with 22 variables and has no duplicates or missing values.
 
 ```{r}
-# Check for duplicates
 duplicates <- student_data[duplicated(student_data), ]
 cat("Number of duplicate rows:", nrow(duplicates), "\n\n")
 
-# Check for missing values
 missing_summary <- colSums(is.na(student_data))
 cat("Missing values per column:\n")
 print(missing_summary)
 
-# Summary
 cat("\n=== Data Quality Summary ===\n")
 cat("Total observations:", nrow(student_data), "\n")
 cat("Total variables:", ncol(student_data), "\n")
@@ -335,9 +332,6 @@ The analysis reveals minimal gender differences in both academic performance and
 The code chunk below creates a multi-layered visualization combining half-eye density plots, box plots, and individual data points to examine how poverty status and government policy support affect student GPA. The `case_when()` function creates four socioeconomic categories combining poverty status with policy support status. The visualization layers `stat_halfeye()` to show distribution shapes with percentile intervals, `geom_boxplot()` to display quartiles, and `geom_jitter()` to show individual student data points. The `geom_text()` adds annotations showing sample size and mean GPA for each category. The `coord_flip()` rotates the plot horizontally for better readability of category labels.
 
 ```{r}
-# ============================================
-# PLOT 5: SOCIOECONOMIC STATUS AND POLICY SUPPORT (FIXED)
-# ============================================
 
 # Create detailed categories
 socio_data <- student_final %>%
@@ -470,9 +464,6 @@ The correlation analysis reveals weak positive associations between university s
 The code chunk below creates a ridgeline plot to visualize how daily study time distributions vary across different GPA categories. The `stat_density_ridges()` function from the ggridges package creates overlapping density curves for each GPA level, with the `geom = "density_ridges_gradient"` parameter enabling color gradients based on study time values. The `calc_ecdf = TRUE` and `quantiles` parameters add vertical lines showing the 25th, 50th (median), and 75th percentiles for each distribution. The `scale_fill_viridis_c()` applies the "plasma" color palette with colors transitioning from purple (lower study time) to yellow (higher study time), making it easy to identify study time patterns. The `scale` parameter controls the degree of overlap between ridges for optimal visual clarity.
 
 ```{r}
-# ============================================
-# PLOT 7: STUDY TIME PATTERNS BY GPA
-# ============================================
 
 ggplot(student_final, 
        aes(x = Time_Studying, y = GPA_Label, fill = stat(x))) +
