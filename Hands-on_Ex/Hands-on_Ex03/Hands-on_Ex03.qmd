@@ -1,11 +1,6 @@
 ---
-<<<<<<< HEAD
 title: "Hands-on Exercise 3"
 author: "Cheng Ho Wang"
-=======
-title: "Hands-on_Ex03"
-format: html
->>>>>>> 6605b582bbd58ddb806f95833c3d9fb4e3165d03
 ---
 
 ## Install and launching R packages
