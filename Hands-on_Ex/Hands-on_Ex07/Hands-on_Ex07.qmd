@@ -209,5 +209,3 @@ ggplot(rice_filtered,
     caption = "Prepared by: Cheng Ho Wang"
   )
 ```
-
-
