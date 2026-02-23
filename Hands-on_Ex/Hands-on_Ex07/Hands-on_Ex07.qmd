@@ -1,6 +1,6 @@
 ---
 title: "Hands-on Exercise 7"
-author: "Cheng Ho Wang"
+author: "Cheng Ho WanG"
 ---
 
 ## 17 Visualising and Analysing Time-oriented Data
