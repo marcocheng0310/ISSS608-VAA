@@ -1,0 +1,12 @@
+name: InClass_Ex_06_ShinyDemo
+title: InClass_Ex_06_ShinyDemo
+username: chenghowang
+account: chenghowang
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 16729694
+bundleId: 11610429
+url: https://chenghowang.shinyapps.io/InClass_Ex_06_ShinyDemo/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
