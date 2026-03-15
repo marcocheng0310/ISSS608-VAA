@@ -21,6 +21,14 @@ In addition, variables with imbalanced or many categories will be recoded into b
 
 Two variables — `customer_segment` and `avg_tx_value` — were found to perfectly predict class membership in preliminary runs, meaning each class was composed entirely of one category. Including such variables causes the LCA to simply rediscover the pre-existing segmentation rather than revealing latent groupings. They are therefore retained in the dataset for visualisation purposes but excluded from the LCA formula.
 
+### Package Evaluation
+
+Three packages were evaluated for LCA clustering:
+
+- **poLCA** — handles categorical variables natively, built-in BIC/AIC/entropy. Selected.
+- **mclust** — tested but assumes continuous Gaussian variables, not suitable for binned ordinal data.
+- **LCAvarsel** — extends poLCA with variable selection but adds complexity not needed here.
+
 ```{r}
 df_clustering <- df %>%
 
@@ -169,20 +177,15 @@ LCA_entropy
 
 Based on the conditional item response probabilities from the LCA model, the 5 latent classes can be interpreted as follows. The model fit is strong, with an entropy of 0.931 indicating well-separated and clearly defined classes.
 
-**Class 1 — Mainstream Mid-Income Savers (36.2%)**
-The largest class, making up over a third of all customers. They skew toward High income (47%) and hold savings accounts (84%) and credit cards (64%), but show lower uptake of investment accounts (41%) and personal loans (30%). Feature usage is narrow, concentrated at 2-3 features. CLV is spread across all tiers with a slight Bronze lean. Churn risk is predominantly Medium (70%), suggesting a stable but not deeply committed segment. These are everyday banking customers with room to grow into broader product adoption.
+**Class 1 — Mainstream Mid-Income Savers (36.2%)** The largest class, making up over a third of all customers. They skew toward High income (47%) and hold savings accounts (84%) and credit cards (64%), but show lower uptake of investment accounts (41%) and personal loans (30%). Feature usage is narrow, concentrated at 2-3 features. CLV is spread across all tiers with a slight Bronze lean. Churn risk is predominantly Medium (70%), suggesting a stable but not deeply committed segment. These are everyday banking customers with room to grow into broader product adoption.
 
-**Class 2 — Full-Product Power Users (21.4%)**
-This class has the highest product adoption of all five classes — near-universal savings account ownership (99.9%), strong credit card (94.5%), personal loan (56%), and investment account (74%) uptake. Feature usage diversity is the highest, with 49% using 4-5 features and 20% using 6 or more. Transaction counts are moderate-to-high. CLV is evenly spread across all tiers. These are the bank's most engaged, multi-product customers and a key segment for retention and premium product offerings.
+**Class 2 — Full-Product Power Users (21.4%)** This class has the highest product adoption of all five classes — near-universal savings account ownership (99.9%), strong credit card (94.5%), personal loan (56%), and investment account (74%) uptake. Feature usage diversity is the highest, with 49% using 4-5 features and 20% using 6 or more. Transaction counts are moderate-to-high. CLV is evenly spread across all tiers. These are the bank's most engaged, multi-product customers and a key segment for retention and premium product offerings.
 
-**Class 3 — Single-Feature Minimal Users (17.4%)**
-Class 3 is strikingly defined by a single characteristic: every customer in this class uses exactly one app feature (feature_cat Pr(1) = 1.0). Product adoption is the lowest across all classes — only 43% hold a savings account, 25% have a credit card, and just 15% have an investment account. Transaction counts are low-to-moderate. Satisfaction scores are predominantly Medium and churn risk is low-to-medium. These customers are using the platform in a very limited way and represent the strongest opportunity for feature engagement and cross-selling campaigns.
+**Class 3 — Single-Feature Minimal Users (17.4%)** Class 3 is strikingly defined by a single characteristic: every customer in this class uses exactly one app feature (feature_cat Pr(1) = 1.0). Product adoption is the lowest across all classes — only 43% hold a savings account, 25% have a credit card, and just 15% have an investment account. Transaction counts are low-to-moderate. Satisfaction scores are predominantly Medium and churn risk is low-to-medium. These customers are using the platform in a very limited way and represent the strongest opportunity for feature engagement and cross-selling campaigns.
 
-**Class 4 — Dissatisfied At-Risk Customers (5.9%)**
-The smallest but most critical class. Every customer in this class has Low satisfaction (satisfaction_cat Pr(1) = 1.0), and 84% are NPS Detractors — the only class with meaningful Detractor presence. Churn risk is the highest of all classes, with 37% classified as High churn. CLV is predominantly Gold (70%), meaning this is not a low-value segment — these are moderately valuable customers who are actively dissatisfied. Immediate intervention through service recovery and targeted outreach is strongly recommended.
+**Class 4 — Dissatisfied At-Risk Customers (5.9%)** The smallest but most critical class. Every customer in this class has Low satisfaction (satisfaction_cat Pr(1) = 1.0), and 84% are NPS Detractors — the only class with meaningful Detractor presence. Churn risk is the highest of all classes, with 37% classified as High churn. CLV is predominantly Gold (70%), meaning this is not a low-value segment — these are moderately valuable customers who are actively dissatisfied. Immediate intervention through service recovery and targeted outreach is strongly recommended.
 
-**Class 5 — High-Volume Transaction Users (19.1%)**
-Class 5 is defined by exceptionally high transaction activity — nearly 50% fall in the Very_High transaction count bucket, far above all other classes. CLV is predominantly Gold (70%), reflecting the value generated through volume. Credit card (60%) and savings account (80%) adoption are solid, though investment account ownership (37%) is relatively low. Satisfaction and churn metrics are similar to Class 1. These are transactionally active customers who rely heavily on the platform for payments and transfers but have not diversified into wealth or lending products.
+**Class 5 — High-Volume Transaction Users (19.1%)** Class 5 is defined by exceptionally high transaction activity — nearly 50% fall in the Very_High transaction count bucket, far above all other classes. CLV is predominantly Gold (70%), reflecting the value generated through volume. Credit card (60%) and savings account (80%) adoption are solid, though investment account ownership (37%) is relatively low. Satisfaction and churn metrics are similar to Class 1. These are transactionally active customers who rely heavily on the platform for payments and transfers but have not diversified into wealth or lending products.
 
 ## Visualising Results
 
@@ -454,5 +457,20 @@ fig2
 
 ![Clustering Tab — UI Wireframe](UI_design_sketch.png)
 
+### Package Selection and Justification
 
+**poLCA** was selected over alternatives such as `mclust` and `LCAvarsel` because 
+it is specifically designed for categorical manifest variables. Unlike `mclust` which 
+assumes continuous Gaussian distributions, `poLCA` handles binned ordinal variables 
+natively and provides BIC, AIC and posterior class probabilities out of the box — 
+essential for evaluating model fit and assigning class membership.
 
+**plotly** (via `ggplotly`) was chosen over base R graphics and `highcharter` for 
+its ability to convert existing `ggplot2` charts into interactive plots with minimal 
+extra code. Users can hover over bars to inspect exact proportions, which is 
+important when comparing 5 classes across multiple variables.
+
+For the Shiny app, the clustering tab uses `sidebarLayout()` with `sliderInput()` 
+for nclass and nrep, `selectInput()` for variable selection, and `actionButton()` 
+to trigger the model. The two chart views are organised under `tabsetPanel()` to 
+keep the interface clean and simple.
