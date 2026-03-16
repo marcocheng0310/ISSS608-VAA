@@ -34,6 +34,10 @@ website:
             href: "Take-home_Exercise/Take-home_Exercise_1/Take-home_Exercise_1.html"
           - text: "Take-home Exercise 2"
             href: "Take-home_Exercise/Take-home_Exercise_2/Take-home_Exercise_2.html"
+      - text: "Group Project"
+        menu: 
+          - text: "Group Project Proposal"
+            href: "Group_project/Project_Proposal.html"
             
     right:
       - href: index.qmd
