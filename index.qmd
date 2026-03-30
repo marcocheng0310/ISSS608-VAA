@@ -2,4 +2,33 @@
 title: "ISSS608-VAA"
 ---
 
-Welcome to Cheng Ho Wang's **ISSS608 Visual Analytics and Applications** homepage. In this website, you will find my coursework prepared for this course.
+Welcome to **Cheng Ho Wang's** ISSS608 Visual Analytics and Applications homepage. In this website, you will find my coursework prepared for this course.
+
+---
+
+### About This Course
+
+ISSS608 Visual Analytics and Applications is a graduate course at Singapore Management University (SMU) under the Master of IT in Business (MITB) programme. The course covers the principles and practice of visual analytics, including:
+
+- 📊 Data visualisation using R and ggplot2
+- 📈 Statistical and time-series graphics
+- 🗺️ Geospatial visualisation
+- 🖥️ Interactive dashboards with Shiny and plotly
+
+---
+
+### About Me
+
+I am a graduate student at SMU pursuing the Master of IT in Business (MITB) programme. I am passionate about turning data into meaningful visual stories.
+
+🔗 Connect with me on [LinkedIn](https://www.linkedin.com/in/chenghowangmarco/)
+
+---
+
+### What You'll Find Here
+
+| Section | Description |
+|---|---|
+| **Hands-on Exercises** | 10 guided in-class exercises |
+| **Take-home Exercises** | 2 independent assignments |
+| **Group Project** | Collaborative Shiny dashboard project |
