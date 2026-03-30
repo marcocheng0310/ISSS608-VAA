@@ -1,0 +1,12 @@
+name: Group_project_Cluster_Tree
+title: Group_project_Cluster_Tree
+username: chenghowang
+account: chenghowang
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 17006182
+bundleId: 11773086
+url: https://chenghowang.shinyapps.io/Group_project_Cluster_Tree/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

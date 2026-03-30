@@ -1,4 +1,0 @@
----
-title: "Hands-on Exercise 1"
-author: "Cheng Ho Wang"
----

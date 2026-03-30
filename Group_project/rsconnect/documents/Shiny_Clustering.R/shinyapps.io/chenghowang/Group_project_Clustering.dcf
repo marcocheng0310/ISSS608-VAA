@@ -1,0 +1,12 @@
+name: Group_project_Clustering
+title: Group_project_Clustering
+username: chenghowang
+account: chenghowang
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 17006130
+bundleId: 11772911
+url: https://chenghowang.shinyapps.io/Group_project_Clustering/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

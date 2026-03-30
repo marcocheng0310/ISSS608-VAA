@@ -1,0 +1,314 @@
+---
+title: ""
+format:
+  html:
+    toc: false
+    page-layout: full
+---
+
+```{=html}
+<style>
+  body { margin: 0; font-family: 'Segoe UI', sans-serif; color: #1e2d4a; }
+  h1,h2,h3,h4 { margin: 0; }
+  a { text-decoration: none; color: inherit; }
+
+  .hero {
+    background: linear-gradient(135deg, #0f1e35 0%, #1a3558 60%, #2563eb 100%);
+    color: #fff;
+    padding: 100px 40px 80px;
+    text-align: center;
+  }
+  .hero-tag {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #93c5fd;
+    margin-bottom: 18px;
+  }
+  .hero h1 { font-size: 52px; font-weight: 700; line-height: 1.15; margin-bottom: 18px; }
+  .hero h1 span { color: #60a5fa; }
+  .hero p { font-size: 17px; color: #cbd5e1; max-width: 640px; margin: 0 auto 36px; line-height: 1.7; }
+  .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: #2563eb; color: #fff; padding: 13px 30px; border-radius: 8px;
+    font-size: 14px; font-weight: 600; border: 2px solid #2563eb;
+  }
+  .btn-primary:hover { background: #1d4ed8; }
+  .btn-outline {
+    background: transparent; color: #fff; padding: 13px 30px; border-radius: 8px;
+    font-size: 14px; font-weight: 600; border: 2px solid rgba(255,255,255,0.4);
+  }
+  .btn-outline:hover { border-color: #fff; }
+
+  .section { padding: 72px 40px; max-width: 1100px; margin: 0 auto; }
+  .section-dark { background: #f8fafc; padding: 72px 40px; }
+  .section-dark .inner { max-width: 1100px; margin: 0 auto; }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #2563eb; margin-bottom: 10px; }
+  .section-title { font-size: 32px; font-weight: 700; color: #0f1e35; margin-bottom: 14px; }
+  .section-sub { font-size: 15px; color: #64748b; max-width: 600px; line-height: 1.7; margin-bottom: 48px; }
+
+  .intro-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+  .intro-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 28px 24px; }
+  .intro-icon { width: 44px; height: 44px; border-radius: 10px; background: #dbeafe; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 14px; }
+  .intro-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: #0f1e35; }
+  .intro-card p { font-size: 13px; color: #64748b; line-height: 1.6; margin: 0; }
+
+  .figures-bar { background: #0f1e35; padding: 56px 40px; text-align: center; }
+  .figures-inner { max-width: 1100px; margin: 0 auto; }
+  .figures-title { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #60a5fa; margin-bottom: 36px; }
+  .figures-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; }
+  .fig-num { font-size: 38px; font-weight: 700; color: #fff; line-height: 1; }
+  .fig-num span { color: #60a5fa; }
+  .fig-label { font-size: 13px; color: #94a3b8; margin-top: 6px; }
+
+  .modules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+  .mod-card { border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background: #fff; }
+  .mod-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+  .mod-header { padding: 20px 20px 14px; border-bottom: 1px solid #f1f5f9; }
+  .mod-num { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #2563eb; margin-bottom: 6px; }
+  .mod-header h3 { font-size: 15px; font-weight: 700; color: #0f1e35; }
+  .mod-body { padding: 14px 20px 20px; }
+  .mod-body p { font-size: 13px; color: #64748b; line-height: 1.6; margin: 0 0 12px; }
+  .mod-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 20px; background: #f1f5f9; color: #475569; font-family: monospace; }
+  .mod-link {
+    display: inline-block; margin-top: 12px; font-size: 11px; font-weight: 600;
+    color: #2563eb; border: 1.5px solid #2563eb; padding: 5px 12px; border-radius: 6px;
+  }
+  .mod-link:hover { background: #2563eb; color: #fff; }
+
+  .shiny-cta { text-align: center; padding: 72px 40px; }
+  .shiny-cta .section-label { justify-content: center; display: block; }
+  .shiny-cta .section-title { margin-bottom: 14px; }
+  .shiny-cta .section-sub { margin: 0 auto 36px; }
+  .btn-launch {
+    display: inline-block; background: #2563eb; color: #fff;
+    padding: 16px 48px; border-radius: 8px; font-size: 16px; font-weight: 700;
+    border: 2px solid #2563eb;
+  }
+  .btn-launch:hover { background: #1d4ed8; }
+
+  .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+  .team-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 28px 24px; text-align: center; }
+  .team-avatar { width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; color: #fff; margin: 0 auto 14px; }
+  .av-blue { background: #2563eb; }
+  .av-green { background: #16a34a; }
+  .av-amber { background: #d97706; }
+  .team-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .team-card .role { font-size: 12px; color: #2563eb; font-weight: 600; margin-bottom: 10px; }
+  .team-card p { font-size: 13px; color: #64748b; line-height: 1.6; margin: 0; }
+
+  .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 640px) { .data-grid { grid-template-columns: 1fr; } }
+  .data-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+  .data-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 8px; color: #0f1e35; }
+  .data-card p { font-size: 13px; color: #64748b; line-height: 1.6; margin: 0; }
+
+  .footer { background: #0f1e35; color: #64748b; text-align: center; padding: 32px 20px; font-size: 13px; }
+  .footer span { color: #60a5fa; }
+</style>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">ISSS608 · Visual Analytics Project · AY2025-26</div>
+  <h1>Fin<span>Sight</span></h1>
+  <p>A web-enabled visual analytics application for democratising customer intelligence in Colombian fintech — built with R Shiny.</p>
+  <div class="hero-btns">
+    <a href="Project_Proposal.html" class="btn-primary">Read Proposal</a>
+    <a href="about.html" class="btn-outline">Meet the Team</a>
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="section">
+  <div class="section-label">What we built</div>
+  <div class="section-title">Four modules. One application.</div>
+  <p class="section-sub">FinSight integrates exploratory analysis, statistical testing, latent class clustering, and predictive modelling into a single interactive Shiny app.</p>
+  <div class="intro-grid">
+    <div class="intro-card">
+      <div class="intro-icon">📊</div>
+      <h4>Exploratory Data Analysis</h4>
+      <p>Visualise customer demographics, product adoption, churn distribution and satisfaction patterns interactively.</p>
+    </div>
+    <div class="intro-card">
+      <div class="intro-icon">🔬</div>
+      <h4>Confirmatory Data Analysis</h4>
+      <p>Run Pearson correlation, ANOVA, and multiple linear regression to statistically validate key relationships.</p>
+    </div>
+    <div class="intro-card">
+      <div class="intro-icon">🧩</div>
+      <h4>Clustering — LCA</h4>
+      <p>Discover 5 latent customer segments using Latent Class Analysis across 18 behavioural and attitudinal variables.</p>
+    </div>
+    <div class="intro-card">
+      <div class="intro-icon">🌳</div>
+      <h4>Decision Tree & Random Forest</h4>
+      <p>Predict customer segment membership using rpart and ranger, with interactive parameter tuning and model comparison.</p>
+    </div>
+  </div>
+</div>
+
+<!-- KEY FIGURES -->
+<div class="figures-bar">
+  <div class="figures-inner">
+    <div class="figures-title">Key Figures from the Dataset</div>
+    <div class="figures-grid">
+      <div class="fig-item">
+        <div class="fig-num">48<span>,723</span></div>
+        <div class="fig-label">Customers analysed</div>
+      </div>
+      <div class="fig-item">
+        <div class="fig-num">54</div>
+        <div class="fig-label">Variables in dataset</div>
+      </div>
+      <div class="fig-item">
+        <div class="fig-num"><span>0.</span>931</div>
+        <div class="fig-label">LCA entropy — excellent fit</div>
+      </div>
+      <div class="fig-item">
+        <div class="fig-num">5</div>
+        <div class="fig-label">Latent customer segments</div>
+      </div>
+      <div class="fig-item">
+        <div class="fig-num">99<span>%+</span></div>
+        <div class="fig-label">Decision tree accuracy</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULES -->
+<div class="section-dark">
+  <div class="inner">
+    <div class="section-label">The application</div>
+    <div class="section-title">Shiny App Modules</div>
+    <p class="section-sub">Each tab of the FinSight app is independently developed and contributes a distinct analytical lens.</p>
+    <div class="modules-grid">
+
+      <div class="mod-card">
+        <div class="mod-header">
+          <div class="mod-num">Tab 01</div>
+          <h3>Exploratory Data Analysis</h3>
+        </div>
+        <div class="mod-body">
+          <p>Interactive histograms, correlation heatmap, faceted scatter plots by income and gender, satisfaction trends by CLV and tenure.</p>
+          <div class="mod-tags">
+            <span class="tag">ggplot2</span>
+            <span class="tag">plotly</span>
+            <span class="tag">ggcorrplot</span>
+          </div>
+          <a href="#" target="_blank" class="mod-link">▶ Open in App</a>
+        </div>
+      </div>
+
+      <div class="mod-card">
+        <div class="mod-header">
+          <div class="mod-num">Tab 02</div>
+          <h3>Confirmatory Data Analysis</h3>
+        </div>
+        <div class="mod-body">
+          <p>Pearson correlation tests, one-way and two-way ANOVA, multiple linear regression with interactive variable selection and model comparison.</p>
+          <div class="mod-tags">
+            <span class="tag">broom</span>
+            <span class="tag">ggplot2</span>
+            <span class="tag">patchwork</span>
+          </div>
+          <a href="#" target="_blank" class="mod-link">▶ Open in App</a>
+        </div>
+      </div>
+
+      <div class="mod-card">
+        <div class="mod-header">
+          <div class="mod-num">Tab 03</div>
+          <h3>Clustering — LCA</h3>
+        </div>
+        <div class="mod-body">
+          <p>Latent Class Analysis with adjustable classes and repetitions. BIC, AIC, entropy metrics. Interactive stacked bar charts for all 18 variables.</p>
+          <div class="mod-tags">
+            <span class="tag">poLCA</span>
+            <span class="tag">plotly</span>
+            <span class="tag">tidyverse</span>
+          </div>
+          <a href="#" target="_blank" class="mod-link">▶ Open in App</a>
+        </div>
+      </div>
+
+      <div class="mod-card">
+        <div class="mod-header">
+          <div class="mod-num">Tab 04</div>
+          <h3>Decision Tree & Random Forest</h3>
+        </div>
+        <div class="mod-body">
+          <p>Pruned classification tree and random forest with interactive parameter tuning. Variable importance plot and confusion matrix comparison.</p>
+          <div class="mod-tags">
+            <span class="tag">rpart</span>
+            <span class="tag">ranger</span>
+            <span class="tag">caret</span>
+          </div>
+          <a href="#" target="_blank" class="mod-link">▶ Open in App</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SHINY CTA -->
+<div class="shiny-cta">
+  <div class="section-label">Live application</div>
+  <div class="section-title">Try FinSight</div>
+  <p class="section-sub">The full interactive application is deployed on shinyapps.io. Explore all four modules directly in your browser.</p>
+  <a href="#" target="_blank" class="btn-launch">▶ Launch Shiny App</a>
+</div>
+
+<!-- DATASET -->
+<div class="section-dark">
+  <div class="inner">
+    <div class="section-label">The data</div>
+    <div class="section-title">COFINFAD Dataset</div>
+    <p class="section-sub">Colombian Fintech Financial Analytics Dataset · Mendeley Data · DOI: 10.17632/mhb4zn3258.1 · CC BY 4.0</p>
+    <div class="data-grid">
+      <div class="data-card">
+        <h4>customer_data.csv</h4>
+        <p>48,723 rows × 54 variables covering demographics, product holdings, app engagement, transaction behaviour, satisfaction scores, NPS, CLV segment, and churn probability.</p>
+      </div>
+      <div class="data-card">
+        <h4>transactions_data.csv</h4>
+        <p>Detailed transaction-level records for the same customer base, covering transaction type, value, frequency, and timing across the full 2023 calendar year.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TEAM -->
+<div class="section">
+  <div class="section-label">The team</div>
+  <div class="section-title">Meet FinSight</div>
+  <p class="section-sub">A team of three MITB students applying visual analytics to real-world fintech data.</p>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar av-blue">TC</div>
+      <h4>Teo Cher In</h4>
+      <div class="role">EDA + CDA · Tab 1 & 2</div>
+      <p>Exploratory and confirmatory analysis modules, including correlation, ANOVA, and regression testing.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar av-green">CW</div>
+      <h4>Cheng Ho Wang</h4>
+      <div class="role">Clustering (LCA) · Tab 3</div>
+      <p>Latent Class Analysis module, variable preparation, model evaluation, and interactive Shiny visualisations.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar av-amber">YZ</div>
+      <h4>Ye Zhili</h4>
+      <div class="role">Decision Tree & RF · Tab 4</div>
+      <p>Classification tree and random forest modelling, hyperparameter tuning, and confusion matrix comparison.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p><span>FinSight</span> · ISSS608 Visual Analytics &amp; Applications · Singapore Management University · 2026</p>
+</div>
+```

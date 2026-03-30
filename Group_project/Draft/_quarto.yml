@@ -1,0 +1,48 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "FinSight"
+  navbar:
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Proposal"
+        href: Project_Proposal.qmd
+      - text: "Analysis"
+        menu:
+          - text: "Exploratory Data Analysis"
+            href: EDA.qmd
+          - text: "Confirmatory Data Analysis"
+            href: CDA.qmd
+          - text: "Clustering (LCA)"
+            href: Clustering.qmd
+          - text: "Decision Tree & Random Forest"
+            href: Decision_Tree.qmd
+      - text: "Shiny App"
+        href: "#"
+    right:
+      - icon: github
+        href: https://github.com/your-repo-link-here
+
+  page-footer:
+    left: "FinSight · ISSS608 Visual Analytics · SMU · 2026"
+    right:
+      - text: "Home"
+        href: index.qmd
+      - text: "Proposal"
+        href: Project_Proposal.qmd
+
+format:
+  html:
+    theme:
+      - sandstone
+    toc: true
+    toc-depth: 3
+    code-fold: false
+    self-contained: false
+
+execute:
+  warning: false
+  message: false

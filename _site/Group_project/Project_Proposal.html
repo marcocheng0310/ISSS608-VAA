@@ -254,7 +254,7 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Explore</strong> the distribution of customer demographics, product adoption, satisfaction, and churn risk through interactive visualisations.</li>
 <li><strong>Confirm</strong> statistically whether demographic and behavioural factors significantly influence churn probability and customer lifetime value.</li>
 <li><strong>Discover</strong> hidden customer segments beyond the existing labels using Latent Class Analysis, revealing latent behavioural groupings across product usage, app engagement, and satisfaction.</li>
-<li><strong>Predict</strong> customer segment membership interactively using decision tree and random forest models, with adjustable parameters exposed through the Shiny interface.</li>
+<li><strong>Predict</strong> which combination of customer features including latent class assignments derived from clustering best identifies customers with high churn probability, and extract actionable decision rules from the tree structure to guide targeted retention strategies.</li>
 </ol>
 </section>
 <section id="data" class="level2">
@@ -285,7 +285,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="decision-tree-and-random-forest" class="level3">
 <h3 class="anchored" data-anchor-id="decision-tree-and-random-forest">4.4 Decision Tree and Random Forest</h3>
-<p>Two R packages were evaluated for the classification module: <code>rpart</code> (pruned classification tree) and <code>ranger</code> (random forest). <code>rpart</code> was selected as the primary model for its interpretability — the tree structure allows users to visually trace how splitting rules on variables such as <code>avg_tx_value</code> and <code>tx_count</code> lead to segment predictions. <code>ranger</code> was included as a comparison model as it achieved marginally higher accuracy (99.28% vs 99.22%) through ensemble learning, though at the cost of interpretability. Both models are exposed in the Shiny app with interactive parameter controls — complexity parameter, maximum depth, and number of trees — so users can tune and compare them directly.</p>
+<p>Two R packages were evaluated for the regression module: rpart and ranger.churn_probability is modeled as a continuous outcome, making this a regression tree analysis. rpart was selected as the primary model for its interpretability: the tree structure allows users to visually trace how splitting rules on variables such as active_products, app_logins_frequency, and satisfaction_score produce churn risk estimates. ranger was included as a benchmark ensemble model, evaluated via R² and RMSE on a held-out test set.</p>
 </section>
 </section>
 <section id="prototype-sketches" class="level2">

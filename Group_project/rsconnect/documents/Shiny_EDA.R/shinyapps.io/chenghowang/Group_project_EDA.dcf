@@ -1,0 +1,12 @@
+name: Group_project_EDA
+title: Group_project_EDA
+username: chenghowang
+account: chenghowang
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 17006117
+bundleId: 11772875
+url: https://chenghowang.shinyapps.io/Group_project_EDA/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

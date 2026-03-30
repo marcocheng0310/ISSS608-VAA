@@ -19,7 +19,7 @@ This project aims to build an interactive visual analytics application that enab
 1.  **Explore** the distribution of customer demographics, product adoption, satisfaction, and churn risk through interactive visualisations.
 2.  **Confirm** statistically whether demographic and behavioural factors significantly influence churn probability and customer lifetime value.
 3.  **Discover** hidden customer segments beyond the existing labels using Latent Class Analysis, revealing latent behavioural groupings across product usage, app engagement, and satisfaction.
-4.  **Predict** customer segment membership interactively using decision tree and random forest models, with adjustable parameters exposed through the Shiny interface.
+4.  **Predict** which combination of customer features including latent class assignments derived from clustering best identifies customers with high churn probability, and extract actionable decision rules from the tree structure to guide targeted retention strategies.
 
 ## 3. Data
 
@@ -52,7 +52,7 @@ Three R packages were evaluated for the clustering module: `poLCA`, `mclust`, an
 
 ### 4.4 Decision Tree and Random Forest
 
-Two R packages were evaluated for the classification module: `rpart` (pruned classification tree) and `ranger` (random forest). `rpart` was selected as the primary model for its interpretability — the tree structure allows users to visually trace how splitting rules on variables such as `avg_tx_value` and `tx_count` lead to segment predictions. `ranger` was included as a comparison model as it achieved marginally higher accuracy (99.28% vs 99.22%) through ensemble learning, though at the cost of interpretability. Both models are exposed in the Shiny app with interactive parameter controls — complexity parameter, maximum depth, and number of trees — so users can tune and compare them directly.
+Two R packages were evaluated for the regression module: rpart and ranger.churn_probability is modeled as a continuous outcome, making this a regression tree analysis. rpart was selected as the primary model for its interpretability: the tree structure allows users to visually trace how splitting rules on variables such as active_products, app_logins_frequency, and satisfaction_score produce churn risk estimates. ranger was included as a benchmark ensemble model, evaluated via R² and RMSE on a held-out test set.
 
 ## 5. Prototype Sketches
 
